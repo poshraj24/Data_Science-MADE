@@ -17,7 +17,7 @@ Understanding the individual risk for developing diabetes is crucial for prevent
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: ExampleSource
+### Datasource1: Diabetes Health Indicators Dataset
 * Metadata URL: https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset
 * Data URL: https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset
 * Data Type: CSV
