@@ -2,28 +2,28 @@
 
 ## Title
 <!-- Give your project a short title. -->
-Diabetes Risk in an Individual.
+Unveiling the Climate Crisis: A Data Science Investigation of Global Warming Trends and Solutions
 
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-1. Can we use a subset of the risk factors to accurately predict whether an individual has diabetes?
+1. How did global warming start to peak and how can it be controlled?
 
 ## Description
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-Understanding the individual risk for developing diabetes is crucial for preventative healthcare. Diabetes affects millions worldwide, and early identification of risk factors can significantly improve outcomes. This project aims to develop a user-friendly tool that empowers individuals to assess their personal risk. By analyzing demographic data, lifestyle factors, and family history, the tool will provide personalized insights and potentially motivate proactive health management. We anticipate that this project will contribute to raising awareness and promoting early intervention in the fight against diabetes.
+This project aims to leverage data science techniques to analyze global warming trends and evaluate the effectiveness of potential solutions. By employing a range of statistical and machine learning methods, we will investigate the relationship between various factors (e.g., greenhouse gas emissions, land use changes, solar radiation) and observed temperature increases. We will also model the potential impact of different mitigation strategies (e.g., renewable energy adoption, carbon capture technologies, reforestation) on future climate scenarios. This research has the potential to provide valuable insights for policymakers, scientists, and the general public, informing evidence-based decision-making in the face of the climate crisis.
 ## Datasources
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: Diabetes Health Indicators Dataset
-* Metadata URL: https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset
-* Data URL: https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset
+### Datasource1: TBW
+* Metadata URL: TBW
+* Data URL: TBW
 * Data Type: CSV
 
 Short description of the DataSource.
-The dataset comes from 253,680 survey responses from cleaned BRFSS 2015 + balanced dataset. 
+TBW
 
 ## Work Packages
 
