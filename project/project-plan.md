@@ -17,19 +17,30 @@ This project aims to leverage data science techniques to analyze global warming 
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: TBW
-* Metadata URL: TBW
-* Data URL: TBW
+### Datasource1: CO2 Emission by countries Year wise (1750-2022)
+* Metadata URL: https://www.kaggle.com/datasets/moazzimalibhatti/co2-emission-by-countries-year-wise-17502022/
+* Data URL: https://www.kaggle.com/datasets/moazzimalibhatti/co2-emission-by-countries-year-wise-17502022/
 * Data Type: CSV
 
-Short description of the DataSource.
-TBW
+This dataset is available in Kaggle and contains detailed comparison of all countries in the world who and when and how much CO2 emitted from 1750-2022.
+
+### Datasource2: Climate Change Data
+* Metadata URL:  https://climatedata.imf.org/pages/climatechange-data
+* Data URL: https://opendata.arcgis.com/datasets/b13b69ee0dde43a99c811f592af4e821_0.csv
+* Data Type: CSV 
+
+This dataset, made available by the IMF, depicts the well-documented links between climate change and natural disasters, as evidenced by a wide variety of climate change literature.
 
 ## Work Packages
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
-1. Example Issue [#1][i1]
-2. ...
+1. Prior to conducting correlation analysis, we will preprocess both datasets by cleaning unwanted columns and ensuring consistency in date and country code formats [#1][i1]
+2. Plot EDA trends of CO2 emissions, surface temperatures, rise of water level over time and so on. Using these parameters we will try to find the impact regarding the occurrance of climate related disasters[#2][i2]
+3. Make assumptions and try to find the correlation between the two datasets [#3][i3]
+4. Insights: Did the assumption really work? [#4][i4]
 
-[i1]: https://github.com/jvalue/made-template/issues/1
+[i1]: https://github.com/poshraj24/Data_Science-MADE/issues/1
+[i2]: https://github.com/poshraj24/Data_Science-MADE/issues/2
+[i3]: https://github.com/poshraj24/Data_Science-MADE/issues/3
+[i4]: https://github.com/poshraj24/Data_Science-MADE/issues/4
