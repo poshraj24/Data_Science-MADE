@@ -2,12 +2,12 @@
 
 ## Title
 <!-- Give your project a short title. -->
-Unveiling the Climate Crisis: A Data Science Investigation of Global Warming Trends and Solutions
+Unveiling the Climate Crisis: A Data Science Investigation of Climate Related Issues (CO2 emissions and climated related disasters) and Solutions
 
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-1. How did global warming start to peak and how can it be controlled?
+1. How did global warming start to peak, what are the probable climate related disasters and how can it be controlled?
 
 ## Description
 
