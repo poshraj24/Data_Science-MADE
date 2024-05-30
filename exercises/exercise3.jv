@@ -7,6 +7,11 @@ pipeline GoodsDataPipeline{
    block GoodsDataTextFileInterpreter oftype TextFileInterpreter{
     // applying encoding to the file 
     encoding: "latin6"; }
+    //ignoring metadata
+    block GoodsMetaDataRemover oftype TextRangeSelector{
+        lineFrom: 8;
+        lineTo: 41336;
+    }
         
    //converting to csv
     block GoodsDataCSVFileInterpreter oftype CSVInterpreter{
@@ -27,23 +32,48 @@ pipeline GoodsDataPipeline{
     block GoodsDataTableInterpreter oftype TableInterpreter{
         header:false;
         columns: [
-            "year" oftype integer,
+            "year" oftype positiveinteger,
             "month" oftype user_defined1,
             "goods_id" oftype user_defined2,
             "goods_name" oftype text,
             "goods_source" oftype text,
-            "abroad" oftype integer,
-            "total" oftype integer,
+            "abroad" oftype positiveinteger,
+            "total" oftype positiveinteger,
             
 
 		];
     }
+
+    transform capitalize{
+    from inputName oftype text;
+    to outputName oftype text;
+    outputName: inputName replace /Januar/ with 'JANUAR'
+    replace /Februar/ with 'FEBRUAR' 
+    replace /März/ with 'MÄRZ' 
+    replace /April/ with 'APRIL' 
+    replace /Mai/ with 'MAI'
+    replace /Juni/ with 'JUNI' 
+    replace /Juli/ with 'JULI' 
+    replace /August/ with 'AUGUST' 
+    replace /September/ with 'SEPTEMBER' 
+    replace /Oktober/ with 'OKTOBER' 
+    replace /November/ with 'NOVEMBER' 
+    replace /Dezember/ with 'DEZEMBER';
+    }
+   block GoodsDataMonthNameCapitalizer oftype TableTransformer{
+    inputColumns: ['month'];
+    outputColumn: 'month';
+    use: capitalize;
+   }
     block GoodsDataSQLiteInterpreter oftype SQLiteLoader {
 		 table: "goods";
          file: "./goodsTransportedByTrain.sqlite";
 	}
-    constraint mahina oftype AllowlistConstraint{
-        allowlist: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+    // Data validation for other columns
+    constraint PositiveRange oftype RangeConstraint { lowerBound: 0; lowerBoundInclusive: false;}
+    valuetype positiveinteger oftype integer { constraints: [ PositiveRange ]; }
+    constraint mahina oftype RegexConstraint{
+        regex: /\b(Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)\b/;
     }
     valuetype user_defined1 oftype text {
         constraints: [mahina];
@@ -54,14 +84,18 @@ pipeline GoodsDataPipeline{
     valuetype user_defined2 oftype text{
         constraints: [id];
     }
+       
 
     //pipeline
     GoodsDataExtractor
     -> GoodsDataTextFileInterpreter
+    -> GoodsMetaDataRemover
     -> GoodsDataCSVFileInterpreter
     -> GoodsColumnDeleter
     -> GoodsDataTableInterpreter
+    -> GoodsDataMonthNameCapitalizer
     -> GoodsDataSQLiteInterpreter;
+
 
 }
   
