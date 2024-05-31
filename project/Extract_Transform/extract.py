@@ -1,54 +1,70 @@
+import os
 import pandas as pd
-import os
-#1 Kaggle Dataset Download
 import kaggle
-import os
-
-os.environ['KAGGLE_CONFIG_DIR'] = os.path.expanduser('~/.kaggle')
-dataset= 'moazzimalibhatti/co2-emission-by-countries-year-wise-17502022'
-
-data_dir = './data/raw_csv_without_transform/'
-if not os.path.exists(data_dir):
-    os.makedirs(data_dir)
-
-
-kaggle.api.dataset_download_files(dataset, path=data_dir, unzip=True)
-
-print(f"Dataset downloaded and extracted to {data_dir}")
-data_dir = './data/raw_csv_without_transform/CO2 emission by countries.csv'
-df1= pd.read_csv(data_dir, encoding='latin1')
-print(df1)
-
-#2 IMF DataSet Download 
 import requests
-url ='https://opendata.arcgis.com/datasets/b13b69ee0dde43a99c811f592af4e821_0.csv'
-directory='./data/raw_csv_without_transform/'
-response=requests.get(url)
-if response.status_code == 200:
-    # Save the content of the response to a local file in the specified directory
-    file_path = os.path.join(directory, 'Climate-related_Disasters_Frequency.csv')
-    with open(file_path, 'wb') as f:
-        f.write(response.content)
-    print(f"CSV file downloaded successfully to {file_path}")
-else:
-    print("Failed to download CSV file. Status code:", response.status_code)
-data_dir = './data/raw_csv_without_transform/Climate-related_Disasters_Frequency.csv'
-df2= pd.read_csv(data_dir, encoding='latin1')
 
-df2=df2.rename(columns={'ISO2':'Code'})
-print(df2)
+class DataDownloader:
+    def __init__(self, kaggle_dataset, kaggle_data_dir, imf_url, imf_data_dir):
+        self.kaggle_dataset = kaggle_dataset
+        self.kaggle_data_dir = kaggle_data_dir
+        self.imf_url = imf_url
+        self.imf_data_dir = imf_data_dir
 
-#joining the datasets
-merged_df = pd.merge(df1, df2, on='Code', how='outer')
-print(merged_df)
+    def download_kaggle_dataset(self):
+        os.environ['KAGGLE_CONFIG_DIR'] = os.path.expanduser('~/.kaggle')
+        if not os.path.exists(self.kaggle_data_dir):
+            os.makedirs(self.kaggle_data_dir)
 
-# Write the outer joined DataFrame to a CSV file
+        kaggle.api.dataset_download_files(self.kaggle_dataset, path=self.kaggle_data_dir, unzip=True)
+        print(f"Dataset downloaded and extracted to {self.kaggle_data_dir}")
 
+    def download_imf_dataset(self):
+        response = requests.get(self.imf_url)
+        if response.status_code == 200:
+            if not os.path.exists(self.imf_data_dir):
+                os.makedirs(self.imf_data_dir)
+            file_path = os.path.join(self.imf_data_dir, 'Climate-related_Disasters_Frequency.csv')
+            with open(file_path, 'wb') as f:
+                f.write(response.content)
+            print(f"CSV file downloaded successfully to {file_path}")
+        else:
+            print("Failed to download CSV file. Status code:", response.status_code)
 
-print("Outer joined CSV file created successfully.")
-output_folder='./data/raw_csv_without_transform'
-os.makedirs(output_folder, exist_ok=True)
-output_file_path = os.path.join(output_folder, 'outer_joined_data.csv')
-merged_df.to_csv(output_file_path, index=False)
+class DataProcessor:
+    def __init__(self, kaggle_data_path, missing_country_codes, imf_data_path):
+        self.kaggle_data_path = kaggle_data_path
+        self.missing_country_codes = missing_country_codes
+        self.imf_data_path = imf_data_path
 
-print("Outer joined CSV file created successfully in the folder:", output_folder)
+    def load_kaggle_data(self):
+        df = pd.read_csv(self.kaggle_data_path, encoding='latin1')
+        # Define a function to fill missing country codes
+        
+        def fill_missing_country_code(row):
+            if pd.isnull(row['Code']):
+                return self.missing_country_codes.get(row['Country'], row['Code'])
+            return row['Code']
+
+        # Apply the function to fill missing country codes
+        
+        
+        df['Code'] = df.apply(fill_missing_country_code, axis=1)
+        
+        return df
+        
+        
+    
+
+    def load_imf_data(self):
+        df = pd.read_csv(self.imf_data_path, encoding='latin1')
+        return df.rename(columns={'ISO2': 'Code'})
+
+    def merge_datasets(self, df1, df2):
+        return pd.merge(df1, df2, on='Code', how='inner')
+
+    def save_merged_data(self, merged_df, output_dir, output_file_name='outer_joined_data.csv'):
+        os.makedirs(output_dir, exist_ok=True)
+        output_file_path = os.path.join(output_dir, output_file_name)
+        merged_df.to_csv(output_file_path, index=False)
+        print(f"Outer joined CSV file created successfully in the folder: {output_dir}")
+
