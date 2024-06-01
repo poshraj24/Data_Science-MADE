@@ -12,7 +12,7 @@ Unveiling the Climate Crisis: A Data Science Investigation of Climate Related Is
 ## Description
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-This project aims to leverage data science techniques to analyze global warming trends and evaluate the effectiveness of potential solutions. By employing a range of statistical and machine learning methods, we will investigate the relationship between various factors (e.g., greenhouse gas emissions, land use changes, solar radiation) and observed temperature increases. We will also model the potential impact of different mitigation strategies (e.g., renewable energy adoption, carbon capture technologies, reforestation) on future climate scenarios. This research has the potential to provide valuable insights for policymakers, scientists, and the general public, informing evidence-based decision-making in the face of the climate crisis.
+This project investigates the relationship between global warming trends (specifically  𝐶𝑂2 emissions) and the increase in climate-related disasters, analyzed on a yearly and country-wise basis. Utilizing data science techniques, including statistical and machine learning methods, we examine the impact of various factors (e.g., greenhouse gas emissions, land use changes, population growth) on the observed increase in disasters.
 ## Datasources
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
