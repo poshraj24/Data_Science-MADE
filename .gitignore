@@ -8,3 +8,6 @@ outer_joined_data.csv
 
 # Ignore all CSV files in the directory
 project/data/raw_csv_without_transform/*.csv
+
+#ignore jupyternotebbok checkpoints
+project/.ipynb_checkpoints/*
