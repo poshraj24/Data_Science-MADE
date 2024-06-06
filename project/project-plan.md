@@ -24,8 +24,8 @@ This project investigates the relationship between global warming trends (specif
 
 This dataset is available in Kaggle and contains detailed comparison of all countries in the world who and when and how much CO<sub>2</sub> emitted from 1750-2022.
 
-### Datasource2: Climate Change Data
-* Metadata URL:  https://climatedata.imf.org/pages/climatechange-data
+### Datasource2: Climate Related Disaster Frequency
+* Metadata URL:  https://climatedata.imf.org/datasets/b13b69ee0dde43a99c811f592af4e821_0/about
 * Data URL: https://opendata.arcgis.com/datasets/b13b69ee0dde43a99c811f592af4e821_0.csv
 * Data Type: CSV 
 
