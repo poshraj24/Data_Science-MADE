@@ -38,9 +38,9 @@ pipeline TemperatureDataPipeline {
         
     // Transform temperatures to Fahrenheit
     transform celsiusToFahrenheit {
-        from celsius oftype decimal;
-        to fahrenheit oftype decimal;
-        fahrenheit: (celsius * 9/5) + 32;
+        from tempCelsius oftype decimal;
+        to tempFahrenheit oftype decimal;
+        tempFahrenheit: (tempCelsius * 9/5) + 32;
     }
 
     block TemperatureUnitConverter1 oftype TableTransformer {
