@@ -27,7 +27,7 @@ pipeline TemperatureDataPipeline {
             "id" oftype positiveinteger,
             "producer" oftype text,
             "model" oftype text,
-            "month" oftype text,
+            "month" oftype ud1,
             "temperature" oftype decimal,
             "battery_temperature" oftype decimal,
             
@@ -37,24 +37,28 @@ pipeline TemperatureDataPipeline {
     }
     constraint PositiveRange oftype RangeConstraint { lowerBound: 0; lowerBoundInclusive: false;}
     valuetype positiveinteger oftype integer { constraints: [ PositiveRange ]; }
-
+    constraint mahina oftype RegexConstraint{
+        regex: /\b(Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)\b/;
+    }
+    valuetype ud1 oftype text {
+        constraints: [mahina];}
     // Transform temperatures to Fahrenheit
     transform celsiusToFahrenheit {
         from celsius oftype decimal;
         to fahrenheit oftype decimal;
-        fahrenheit: (celsius * 9 / 5) + 32;
+        fahrenheit: (celsius * 9/5) + 32;
     }
 
     block TemperatureUnitConverter1 oftype TableTransformer {
-        inputColumns: ["temperature"];
+        inputColumns: ['temperature'];
 
-        outputColumn: "temperature";
+        outputColumn: 'temperature';
         use: celsiusToFahrenheit;
     }
     block TemperatureUnitConverter2 oftype TableTransformer {
-        inputColumns: ["battery_temperature"];
+        inputColumns: ['battery_temperature'];
 
-        outputColumn: "battery_temperature";
+        outputColumn: 'battery_temperature';
         use: celsiusToFahrenheit;
     }
 
