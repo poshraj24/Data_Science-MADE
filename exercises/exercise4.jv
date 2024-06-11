@@ -1,0 +1,79 @@
+pipeline TemperatureDataPipeline {
+
+     // Extract ZIP file contents
+    block ZIPDownload oftype GTFSExtractor {
+       url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip";
+    }
+    // Download ZIP file from URL
+    block PickCSV oftype FilePicker {
+        path: "/data.csv";
+        
+    }
+
+   
+
+    block InterpretText oftype TextFileInterpreter{
+    // applying encoding to the file 
+        encoding: "latin6"; }
+    // Read CSV into a table
+    block ReadCSV oftype CSVInterpreter {
+       
+        delimiter: ";";
+       
+    }
+    block TemperatureInformation oftype TableInterpreter{
+        header:false;
+        columns: [
+            "id" oftype positiveinteger,
+            "producer" oftype text,
+            "model" oftype text,
+            "month" oftype text,
+            "temperature" oftype decimal,
+            "battery_temperature" oftype decimal,
+            
+            
+
+		];
+    }
+    constraint PositiveRange oftype RangeConstraint { lowerBound: 0; lowerBoundInclusive: false;}
+    valuetype positiveinteger oftype integer { constraints: [ PositiveRange ]; }
+
+    // Transform temperatures to Fahrenheit
+    transform celsiusToFahrenheit {
+        from celsius oftype decimal;
+        to fahrenheit oftype decimal;
+        fahrenheit: (celsius * 9 / 5) + 32;
+    }
+
+    block TemperatureUnitConverter1 oftype TableTransformer {
+        inputColumns: ["temperature"];
+
+        outputColumn: "temperature";
+        use: celsiusToFahrenheit;
+    }
+    block TemperatureUnitConverter2 oftype TableTransformer {
+        inputColumns: ["battery_temperature"];
+
+        outputColumn: "battery_temperature";
+        use: celsiusToFahrenheit;
+    }
+
+    // Write to SQLite database
+    block TemperatureDataSQLiteInterpreter oftype SQLiteLoader {
+        table: "temperatures";
+        file: "./temperatures.sqlite";
+        
+    }
+
+    // Pipeline Flow
+    ZIPDownload
+    -> PickCSV
+    -> InterpretText
+    -> ReadCSV
+    -> TemperatureInformation
+    -> TemperatureUnitConverter1
+    -> TemperatureUnitConverter2
+    -> TemperatureDataSQLiteInterpreter;
+
+
+}
