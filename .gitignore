@@ -13,3 +13,8 @@ project/data/raw_csv_without_transform/*.csv
 #ignore jupyternotebook checkpoints and some notebook
 project/.ipynb_checkpoints/*
 project/Data_Report.ipynb
+
+/project/__pycache__/*
+/tests/__pycache__/*
+/tests/data/*
+/project/Extract_Transform/__pycache__/*
