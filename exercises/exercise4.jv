@@ -12,9 +12,9 @@ pipeline TemperatureDataPipeline {
 
    
 
-    block InterpretText oftype TextFileInterpreter{
+    block InterpretText oftype TextFileInterpreter{}
     // applying encoding to the file 
-        encoding: "latin6"; }
+        //encoding: "latin6"; 
     // Read CSV into a table
     block ReadCSV oftype CSVInterpreter {
        
