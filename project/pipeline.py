@@ -1,13 +1,14 @@
 
+import os
 import sys
 import pandas as pd
 import sqlite3
 from pathlib import Path
 project_path = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_path))
-
-from project.Extract_Transform.extract import DataDownloader, DataProcessor
-from project.Extract_Transform.transform import DataTransformer
+sys.path.append(os.getcwd())
+from Extract_Transform.extract import DataDownloader, DataProcessor
+from Extract_Transform.transform import DataTransformer
 
 class Pipeline:
     def __init__(self):
