@@ -15,6 +15,6 @@ project/.ipynb_checkpoints/*
 project/Data_Report.ipynb
 
 /project/__pycache__/*
-/tests/__pycache__/*
-/tests/data/*
+/project/tests/__pycache__/*
+/project/tests/data/*
 /project/Extract_Transform/__pycache__/*
