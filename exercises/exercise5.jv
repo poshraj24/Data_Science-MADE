@@ -12,7 +12,7 @@ pipeline energie{
         path:"/stops.txt";
     }
     block ReadTextFile oftype TextFileInterpreter{
-        encoding:"latin6";
+        //encoding:"latin6";
     }
     block ReadCSVFile oftype CSVInterpreter{
         enclosing: '"';
@@ -47,9 +47,9 @@ pipeline energie{
     }
     constraint coordinates oftype RangeConstraint{
         lowerBound: -90;
-        lowerBoundInclusive: true;
+        //lowerBoundInclusive: true;
         upperBound: 90;
-        upperBoundInclusive: true;
+        //upperBoundInclusive: true;
     }
     block table_to_SQLite oftype SQLiteLoader{
         table: "stops";
