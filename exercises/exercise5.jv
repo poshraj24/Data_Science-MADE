@@ -12,7 +12,7 @@ pipeline energie{
         path:"/stops.txt";
     }
     block ReadTextFile oftype TextFileInterpreter{
-        //encoding:"latin6";
+        encoding:"utf8";
     }
     block ReadCSVFile oftype CSVInterpreter{
         enclosing: '"';
