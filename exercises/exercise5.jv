@@ -36,8 +36,8 @@ pipeline energie{
         ];
     }
     constraint zone oftype RangeConstraint{
-        lowerBound: 1645;
-        upperBound: 2024;
+        lowerBound: 2001;
+        upperBound: 2001;
 
     }
     valuetype LongitudeLatitude oftype decimal{
