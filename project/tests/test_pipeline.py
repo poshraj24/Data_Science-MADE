@@ -3,7 +3,7 @@ import sqlite3
 import pandas as pd
 import pytest
 
-from pipeline import Pipeline
+from project.pipeline import Pipeline
 
 @pytest.fixture(scope='module')
 def setup_pipeline():
