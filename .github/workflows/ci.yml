@@ -50,7 +50,7 @@ jobs:
 
       # Run exercise feedback
       - name: Make test running
-        run: chmod +x /home/runner/work/Data_Science-MADE/Data_Science-MADE/project/tests.sh
+        run: chmod +x /home/runner/work/Data_Science-MADE/Data_Science-MADE/project/test.sh
 
       - name: Run Tests
-        run: /home/runner/work/Data_Science-MADE/Data_Science-MADE/project/tests.sh
+        run: /home/runner/work/Data_Science-MADE/Data_Science-MADE/project/test.sh
