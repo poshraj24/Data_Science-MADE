@@ -25,8 +25,9 @@ class DataDownloader:
         kaggle.api.authenticate()
         kaggle.api.dataset_download_files(self.kaggle_dataset, path=self.kaggle_data_dir, unzip=True)
         print(f"Dataset downloaded and extracted to {self.kaggle_data_dir}")
-
-
+        
+        # Set the KAGGLE_CONFIG_DIR environment variable to the directory containing the kaggle.json file
+        os.environ['KAGGLE_CONFIG_DIR'] = str(credentials_path.parent)
 
 
     def download_imf_dataset(self):
