@@ -1,1 +1,1 @@
-python -m pytest ./tests/test_pipeline.py
+python -m pytest project/tests/test_pipeline.py
