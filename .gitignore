@@ -18,3 +18,4 @@ project/Data_Report.ipynb
 /project/tests/__pycache__/*
 /project/tests/data/*
 /project/Extract_Transform/__pycache__/*
+kaggle.json
