@@ -44,10 +44,16 @@ jobs:
             "username": "${{ secrets.KAGGLE_USERNAME }}",
             "key": "${{ secrets.KAGGLE_KEY }}"
           }' > kaggle.json
-          mv kaggle.json /home/runner/work/Data_Science-MADE/Data_Science-MADE/project
-          export KAGGLE_CONFIG_DIR=/home/runner/work/Data_Science-MADE/Data_Science-MADE/project
-          chmod 600 /home/runner/work/Data_Science-MADE/Data_Science-MADE/project/kaggle.json
+          mkdir -p /home/runner/.kaggle
+          mv kaggle.json /home/runner/.kaggle/
+          chmod 600 /home/runner/.kaggle/kaggle.json
           echo "Kaggle authentication is done"
+
+      # Set environment variables for Kaggle credentials
+      - name: Set Kaggle Environment Variables
+        run: |
+          echo "KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}" >> $GITHUB_ENV
+          echo "KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}" >> $GITHUB_ENV
 
       # Run exercise feedback
       - name: Make test running

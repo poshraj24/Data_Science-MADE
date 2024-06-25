@@ -29,7 +29,8 @@ class DataDownloader:
         # Set the KAGGLE_CONFIG_DIR environment variable to the directory containing the kaggle.json file
         os.environ['KAGGLE_CONFIG_DIR'] = str(credentials_path.parent)
 
-        kaggle.api.authenticate()
+        api= KaggleApi()
+        api.authenticate()
         # Create the destination folder if it doesn't exist
         os.makedirs(self.kaggle_data_dir, exist_ok=True)
         kaggle.api.dataset_download_files(self.kaggle_dataset, path=self.kaggle_data_dir, unzip=True)
