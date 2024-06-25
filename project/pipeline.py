@@ -7,8 +7,8 @@ from pathlib import Path
 project_path = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_path))
 sys.path.append(os.getcwd())
-from Extract_Transform.extract import DataDownloader, DataProcessor
-from Extract_Transform.transform import DataTransformer
+from project.Extract_Transform.extract import DataDownloader, DataProcessor
+from project.Extract_Transform.transform import DataTransformer
 
 class Pipeline:
     def __init__(self):
@@ -68,7 +68,7 @@ class Pipeline:
         print("Data inserted successfully into the database.")
         conn.close()
 
-
+    
 
 if __name__ == '__main__':
     Pipeline= Pipeline()
