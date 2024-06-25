@@ -16,19 +16,26 @@ class DataDownloader:
     def download_kaggle_dataset(self):
         credentials_path: Path = (
         Path(__file__).parent.parent / "kaggle.json"
-        )  # should be as: project/kaggle.json
+        )  
         if os.getenv("KAGGLE_USERNAME") is None or os.getenv("KAGGLE_KEY") is None:
-                with open(credentials_path) as f:
-                    kaggle_auth = json.load(f)
-                    os.environ["KAGGLE_USERNAME"] = kaggle_auth["username"]
-                    os.environ["KAGGLE_KEY"] = kaggle_auth["key"]
-        kaggle.api.authenticate()
-        kaggle.api.dataset_download_files(self.kaggle_dataset, path=self.kaggle_data_dir, unzip=True)
-        print(f"Dataset downloaded and extracted to {self.kaggle_data_dir}")
+                if credentials_path.exists():
+                    with open(credentials_path) as f:
+                        kaggle_auth = json.load(f)
+                        os.environ["KAGGLE_USERNAME"] = kaggle_auth["username"]
+                        os.environ["KAGGLE_KEY"] = kaggle_auth["key"]
+                else:
+                    raise FileNotFoundError(f"Could not find {credentials_path}. Make sure it exists.")
         
         # Set the KAGGLE_CONFIG_DIR environment variable to the directory containing the kaggle.json file
         os.environ['KAGGLE_CONFIG_DIR'] = str(credentials_path.parent)
 
+        kaggle.api.authenticate()
+        # Create the destination folder if it doesn't exist
+        os.makedirs(self.kaggle_data_dir, exist_ok=True)
+        kaggle.api.dataset_download_files(self.kaggle_dataset, path=self.kaggle_data_dir, unzip=True)
+        print(f"Dataset downloaded and extracted to {self.kaggle_data_dir}")
+        
+        
 
     def download_imf_dataset(self):
         response = requests.get(self.imf_url)

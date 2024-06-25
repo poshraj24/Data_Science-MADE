@@ -45,6 +45,7 @@ jobs:
             "key": "${{ secrets.KAGGLE_KEY }}"
           }' > kaggle.json
           mv kaggle.json /home/runner/work/Data_Science-MADE/Data_Science-MADE/project
+          export KAGGLE_CONFIG_DIR=/home/runner/work/Data_Science-MADE/Data_Science-MADE/project
           chmod 600 /home/runner/work/Data_Science-MADE/Data_Science-MADE/project/kaggle.json
           echo "Kaggle authentication is done"
 
