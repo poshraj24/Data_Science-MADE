@@ -1,7 +1,10 @@
 import os
 import pandas as pd
 import kaggle
+from pathlib   import Path
+from kaggle.api.kaggle_api_extended import KaggleApi
 import requests
+import json
 
 class DataDownloader:
     def __init__(self, kaggle_dataset, kaggle_data_dir, imf_url, imf_data_dir):
@@ -11,12 +14,20 @@ class DataDownloader:
         self.imf_data_dir = imf_data_dir
 
     def download_kaggle_dataset(self):
-        os.environ['KAGGLE_CONFIG_DIR'] = os.path.expanduser('~/.kaggle')
-        if not os.path.exists(self.kaggle_data_dir):
-            os.makedirs(self.kaggle_data_dir)
-
+        credentials_path: Path = (
+        Path(__file__).parent.parent / "kaggle.json"
+        )  # should be as: project/kaggle.json
+        if os.getenv("KAGGLE_USERNAME") is None or os.getenv("KAGGLE_KEY") is None:
+                with open(credentials_path) as f:
+                    kaggle_auth = json.load(f)
+                    os.environ["KAGGLE_USERNAME"] = kaggle_auth["username"]
+                    os.environ["KAGGLE_KEY"] = kaggle_auth["key"]
+        kaggle.api.authenticate()
         kaggle.api.dataset_download_files(self.kaggle_dataset, path=self.kaggle_data_dir, unzip=True)
         print(f"Dataset downloaded and extracted to {self.kaggle_data_dir}")
+
+
+
 
     def download_imf_dataset(self):
         response = requests.get(self.imf_url)

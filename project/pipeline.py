@@ -25,6 +25,7 @@ class Pipeline:
         output_dir = './data/raw_csv_without_transform/'
 
         downloader = DataDownloader(kaggle_dataset, kaggle_data_dir, imf_url, imf_data_dir)
+        #download_kaggle_dataset(dataset_name, kaggle_data_dir)
         downloader.download_kaggle_dataset()
         downloader.download_imf_dataset()
         #dictionary of missing country codes
