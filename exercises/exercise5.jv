@@ -12,7 +12,7 @@ pipeline energie{
         path:"/stops.txt";
     }
     block ReadTextFile oftype TextFileInterpreter{
-        encoding:"utf8";
+        //encoding:"utf8";
     }
     block ReadCSVFile oftype CSVInterpreter{
         enclosing: '"';
@@ -36,8 +36,8 @@ pipeline energie{
         ];
     }
     constraint zone oftype RangeConstraint{
-        lowerBound: 2001;
-        upperBound: 2001;
+        lowerBound: 1645;
+        upperBound: 1645;
 
     }
     valuetype LongitudeLatitude oftype decimal{
@@ -47,9 +47,9 @@ pipeline energie{
     }
     constraint coordinates oftype RangeConstraint{
         lowerBound: -90;
-        //lowerBoundInclusive: true;
+        lowerBoundInclusive: true;
         upperBound: 90;
-        //upperBoundInclusive: true;
+        upperBoundInclusive: true;
     }
     block table_to_SQLite oftype SQLiteLoader{
         table: "stops";
