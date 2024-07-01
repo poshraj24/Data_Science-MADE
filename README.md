@@ -3,9 +3,9 @@
 ![](https://byob.yarr.is/poshraj24/Data_Science-MADE/score_ex1) ![](https://byob.yarr.is/poshraj24/Data_Science-MADE/score_ex2) ![](https://byob.yarr.is/poshraj24/Data_Science-MADE/score_ex3) ![](https://byob.yarr.is/poshraj24/Data_Science-MADE/score_ex4) ![](https://byob.yarr.is/poshraj24/Data_Science-MADE/score_ex5)
 
 # Methods of Advanced Data Engineering Project: Unveiling the Climate Crisis: A Data Science Investigation of Climate Related Issues (CO2 emissions and climated related disasters) 
-##Overview
+## Overview
 This project explores the relationship between global warming trends, specifically CO<sub>2</sub> emissions, and the increase in climate-related disasters on a yearly and country-wise basis. Utilizing data science techniques, we aim to quantify the impact of CO<sub>2</sub> emissions on the frequency and severity of climate-related disasters. The goal is to provide insights into how rising CO<sub>2</sub> levels have contributed to the increase in these disasters and to identify potential strategies for mitigation.
-##Datasets
+## Datasets
 The following data sources are used in this project:
 
 CO<sub>2</sub> Emission by Countries Year Wise (1750-2022):
@@ -24,9 +24,9 @@ Description: This dataset, provided by the IMF, details the frequency of climate
 The data from both sources are handled by a two scripts under <code>Extract_Transform</code>, <code>pipeline.py</code> whereas analytics is handled via <code>analysis-report.ipynb</code> file. 
 
 Test cases have been written and verified using pytest to ensure the robustness of the code.
-#Main Question
+# Main Question
 How did CO<sub>2</sub>  start to peak, and are the climate related disasters correlated with CO<sub>2</sub>emissions?
-#Final Results
+# Final Results
 The project addresses a major research question, which are detailed in the issues section and in the project plan document, project-plan.md. The findings are summarized in the final report pdf, analysis-report.pdf, and the code used to generate these findings is available in the exploration notebook, analysis-report.ipynb.
 ## Kaggle Authentication
 To access the dataset from Kaggle, follow these steps:
