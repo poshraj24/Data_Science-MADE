@@ -21,7 +21,7 @@ Metadata URL: IMF Metadata  <br>
 Data URL: ArcGIS Data <br>
 Data Type: CSV <br>
 Description: This dataset, provided by the IMF, details the frequency of climate-related disasters and their links to climate change as documented in climate change literature. <br>
-#Implementation
+# Implementation
 The data from both sources are handled by a two scripts under <code>Extract_Transform</code>, <code>pipeline.py</code> whereas analytics is handled via <code>analysis-report.ipynb</code> file. 
 
 Test cases have been written and verified using pytest to ensure the robustness of the code.
