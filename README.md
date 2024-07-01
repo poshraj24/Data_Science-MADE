@@ -21,13 +21,13 @@ Metadata URL: IMF Metadata  <br>
 Data URL: ArcGIS Data <br>
 Data Type: CSV <br>
 Description: This dataset, provided by the IMF, details the frequency of climate-related disasters and their links to climate change as documented in climate change literature. <br>
-# Implementation
+## Implementation
 The data from both sources are handled by a two scripts under <code>Extract_Transform</code>, <code>pipeline.py</code> whereas analytics is handled via <code>analysis-report.ipynb</code> file. 
 
 Test cases have been written and verified using pytest to ensure the robustness of the code.
-# Main Question
+## Main Question
 How did CO<sub>2</sub>  start to peak, and are the climate related disasters correlated with CO<sub>2</sub>emissions?
-# Final Results
+## Final Results
 The project addresses a major research question, which are detailed in the issues section and in the project plan document, project-plan.md. The findings are summarized in the final report pdf, analysis-report.pdf, and the code used to generate these findings is available in the exploration notebook, analysis-report.ipynb.
 ## Kaggle Authentication
 To access the dataset from Kaggle, follow these steps:
