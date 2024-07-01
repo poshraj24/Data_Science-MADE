@@ -4,7 +4,7 @@
 
 # Methods of Advanced Data Engineering Project: Unveiling the Climate Crisis: A Data Science Investigation of Climate Related Issues (CO2 emissions and climated related disasters) 
 ## Overview
-This project explores the relationship between global warming trends, specifically CO<sub>2</sub> emissions, and the increase in climate-related disasters on a yearly(decade-wise) basis. Utilizing data science techniques, we aim to quantify the impact of CO<sub>2</sub> emissions on the frequency and severity of climate-related disasters. The goal is to provide insights into how rising CO<sub>2</sub> levels have contributed to the increase in these disasters and to identify potential strategies for mitigation.
+This project explores the relationship between global warming trends, specifically CO<sub>2</sub> emissions, and the increase in climate-related disasters on a yearly(decade-wise) basis. Utilizing data science techniques, we aim to quantify the impact of CO<sub>2</sub> emissions on the frequency and severity of climate-related disasters. The goal is to provide insights into how rising CO<sub>2</sub> levels have contributed to the increase in these disasters.
 ## Datasets
 The following data sources are used in this project:
 
