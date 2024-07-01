@@ -26,7 +26,7 @@ The data from both sources are handled by a two scripts under <code>Extract_Tran
 
 Test cases have been written and verified using pytest to ensure the robustness of the code.
 ## Main Question
-How did CO<sub>2</sub>  start to peak, and are the climate related disasters correlated with CO<sub>2</sub>emissions?
+How did CO<sub>2</sub>  start to peak, and are the climate related disasters correlated with CO<sub>2</sub> emissions?
 ## Final Results
 The project addresses a major research question, which are detailed in the issues section and in the project plan document, project-plan.md. The findings are summarized in the final report pdf, analysis-report.pdf, and the code used to generate these findings is available in the exploration notebook, analysis-report.ipynb.
 ## Kaggle Authentication
