@@ -8,18 +8,19 @@ This project explores the relationship between global warming trends, specifical
 ## Datasets
 The following data sources are used in this project:
 
-CO<sub>2</sub> Emission by Countries Year Wise (1750-2022):
+CO<sub>2</sub> Emission by Countries Year Wise (1750-2022): <br>
 
-Metadata URL: Kaggle Metadata
-Data URL: Kaggle Data
-Data Type: CSV
-Description: This dataset contains detailed comparisons of CO<sub>2</sub> emissions from various countries from 1750 to 2022.
-Climate Related Disaster Frequency:
+Metadata URL: Kaggle Metadata <br>
+Data URL: Kaggle Data <br>
+Data Type: CSV<br>
+Description: This dataset contains detailed comparisons of CO<sub>2</sub> emissions from various countries from 1750 to 2022. <br>
 
-Metadata URL: IMF Metadata
-Data URL: ArcGIS Data
-Data Type: CSV
-Description: This dataset, provided by the IMF, details the frequency of climate-related disasters and their links to climate change as documented in climate change literature.
+Climate Related Disaster Frequency: <br>
+
+Metadata URL: IMF Metadata  <br>
+Data URL: ArcGIS Data <br>
+Data Type: CSV <br>
+Description: This dataset, provided by the IMF, details the frequency of climate-related disasters and their links to climate change as documented in climate change literature. <br>
 #Implementation
 The data from both sources are handled by a two scripts under <code>Extract_Transform</code>, <code>pipeline.py</code> whereas analytics is handled via <code>analysis-report.ipynb</code> file. 
 
