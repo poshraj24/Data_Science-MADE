@@ -3,6 +3,7 @@ from pathlib import Path
 import sys
 import os
 sys.path.append(os.getcwd())
+import pandasql as psql
 #from project.Extract_Transform import extract
 
 class DataTransformer:
@@ -89,19 +90,23 @@ class DataTransformer:
                            'F2013', 'F2014', 'F2015', 'F2016', 'F2017', 'F2018', 'F2019', 'F2020', 'F2021', 'F2022']
         self.df[columns_to_fill] = self.df[columns_to_fill].fillna(0)
     
+
+
     def rename_columns(self):
         self.df = self.df.rename(columns={'Country_x': 'Country', 'Ã¯Â»Â¿ObjectId': 'ObjectId', 'Indicator': 'Disaster Type'})
         self.df['Disaster Type'] = self.df['Disaster Type'].astype(str).str.replace(
             'Climate related disasters frequency, Number of Disasters:', '', regex=False)
+        self.df = self.df.rename(columns={'CO2 emission (Tons)': 'CO2_Emission'})
+        
     
     def filter_data(self):
         self.df.dropna(subset=['Year'], inplace=True)
         self.df['Year'] = self.df['Year'].astype(int)
         self.df = self.df.sort_values(by='Year', ascending=False)
         self.df = self.df[self.df['Year'] >= 1980]
+        #self.df.drop(self.df[self.df['Disaster_Type'] == 'TOTAL'].index,inplace=True)
     
-        
-
+    
     
     def save_transformed_data(self, output_path):
         self.df.to_csv(output_path, index=False)
@@ -113,6 +118,7 @@ class DataTransformer:
         self.rename_columns()
         #self.drop_unnecessary_columns()
         self.filter_data()
+        
         self.save_transformed_data(output_path)
         print("Data transformation complete.")
 
