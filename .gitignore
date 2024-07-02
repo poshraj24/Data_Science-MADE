@@ -20,4 +20,5 @@ project/Data_Report.ipynb
 /project/Extract_Transform/__pycache__/*
 kaggle.json
 project/analysis-report.docx
+project/ClimateData_revised.sqlite
 
