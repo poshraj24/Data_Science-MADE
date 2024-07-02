@@ -36,9 +36,10 @@ This dataset, made available by the IMF, depicts the well-documented links betwe
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
 1. Prior to conducting correlation analysis, we will preprocess both datasets by cleaning unwanted columns and ensuring consistency in date and country code formats [#1][i1]
-2. Plot EDA trends of CO<sub>2</sub> emissions, surface temperatures, rise of water level over time and so on. Using these parameters we will try to find the impact regarding the occurrance of climate related disasters[#2][i2]
-3. Make assumptions and try to find the correlation between the two datasets [#3][i3]
-4. Insights: Did the assumption really work? [#4][i4]
+2. Make the working pipeline to get curated data [#2][i2]
+3. Plot EDA trends of CO<sub>2</sub> emissions and disaster frequencies. Using these parameters we will try to find the impact regarding the occurrance of climate related disasters[#3][i3]
+4. Make assumptions and try to find the correlation between the two datasets (CO<sub>2</sub>emissions and disaster frequencies) [#4][i4]
+
 
 [i1]: https://github.com/poshraj24/Data_Science-MADE/issues/1
 [i2]: https://github.com/poshraj24/Data_Science-MADE/issues/2
