@@ -2,17 +2,17 @@
 
 ## Title
 <!-- Give your project a short title. -->
-Unveiling the Climate Crisis: A Data Science Investigation of Climate Related Issues (CO<sub>2</sub> emissions and climated related disasters) and Solutions
+Unveiling the Climate Crisis: A Data Science Investigation of Climate Related Issues (CO<sub>2</sub> emissions and climated related disasters) 
 
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-1. How did global warming start to peak, what are the probable climate related disasters and how can it be controlled?
+1. How did CO<sub>2</sub> start to peak, and are the climate related disasters correlated with CO<sub>2</sub> emissions??
 
 ## Description
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-This project investigates the relationship between global warming trends (specifically  𝐶𝑂<sub>2</sub> emissions) and the increase in climate-related disasters, analyzed on a yearly and country-wise basis. Utilizing data science techniques, including statistical and machine learning methods, we examine the impact of various factors (e.g., greenhouse gas emissions, land use changes, population growth) on the observed increase in disasters.
+This project investigates the relationship between global warming trends (specifically  𝐶𝑂<sub>2</sub> emissions) and the increase in climate-related disasters, analyzed on a decadal basis. Utilizing data science techniques, including statistical and machine learning methods, we examine the impact of CO<sub>2</sub> emissions on the observed increase in disasters.
 ## Datasources
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
