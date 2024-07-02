@@ -54,6 +54,7 @@ class Pipeline:
         transformer.fill_missing_values()
         transformer.rename_columns()
         transformer.filter_data()
+        
         #transformer.drop_unnecessary_columns()
         transformer.transform(output_path)
         transformer.save_transformed_data(output_path)
@@ -62,10 +63,12 @@ class Pipeline:
         
     def csv_to_sqlite(self):    
         df= pd.read_csv('./data/transformed_climate_data.csv')
-        columns_to_drop = ['Calling Code', 'ObjectId', 'Country_y', 'ISO3', 'CTS_Full_Descriptor', 'Unit']
+        df['F2021'] = df['F2021'].astype(str).str.strip()
+        df['F2022'] = df['F2022'].astype(str).str.strip()
+        columns_to_drop = ['Calling Code', 'ObjectId', 'Country_y', 'ISO3', 'CTS_Full_Descriptor', 'Unit','F2021','F2022']
         df.drop(columns=columns_to_drop, inplace=True)
-        conn = sqlite3.connect('./data/ClimateData.sqlite')
-        df.to_sql('ClimateData', conn, if_exists='replace', index=False)
+        conn = sqlite3.connect('./data/ClimateData_revised.sqlite')
+        df.to_sql('ClimateData_revised', conn, if_exists='replace', index=False)
         print("Data inserted successfully into the database.")
         conn.close()
 
