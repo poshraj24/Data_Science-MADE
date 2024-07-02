@@ -3,7 +3,7 @@ from pathlib import Path
 import sys
 import os
 sys.path.append(os.getcwd())
-import pandasql as psql
+#import pandasql as psql
 #from project.Extract_Transform import extract
 
 class DataTransformer:
